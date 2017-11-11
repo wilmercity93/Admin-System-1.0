@@ -57,18 +57,27 @@ Route::get('/', ['uses' => 'HomeController@home']);
         Route::resource('notificaciones', 'NotificacionesController');
         Route::get('notificaciones/{notificaciones}/permissions', ['uses' => 'NotificacionesController@permissions', 'as' => 'notificaciones.permissions']);
 
-
         //Reportes
         Route::get('reports/dos', ['uses' => 'ReportsController@dos', 'as' => 'role.permissions']);
         Route::get('reports/tres', ['uses' => 'ReportsController@tres', 'as' => 'role.permissions']);
         Route::get('reports/cuatro', ['uses' => 'ReportsController@cuatro', 'as' => 'role.permissions']);
         Route::resource('reports', 'ReportsController');
         Route::get('reports/{reports}/permissions', ['uses' => 'ReportsController@permissions', 'as' => 'reports.permissions']);
+
+        //Sedes
+        Route::resource('sedes', 'sedesController');
+
+        //Estados
+        Route::resource('estados', 'estadosController');
+        
+        //Configuracion
+        Route::resource('configuracion', 'configuracionController');
+
+        //Categorias
+      	Route::resource('categorias', 'CategoriasController');
         
 
-        
  });
-
 Route::group(['middleware' => ['web']], function () {
-	Route::resource('sedes', 'sedesController');
+	Route::resource('notificaciones', 'NotificacionesController');
 });

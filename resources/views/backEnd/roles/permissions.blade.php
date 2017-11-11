@@ -36,11 +36,12 @@
         </div>
     @endforeach
     </div>
+    <br>
       <div class="form-group">
             <div class="col-sm-offset-3 col-sm-3">
                 {!! Form::submit('Submit', ['class' => 'btn btn-success form-control']) !!}
             </div>
-            <a href="{{$role->is_group ? route('group.index'):route('role.index')}}" class="btn btn-default">Back to list</a>
+            <a href="{{$role->is_group ? route('group.index'):route('role.index')}}" class="btn btn-default">Back to List</a>
         </div>
         
         </div>

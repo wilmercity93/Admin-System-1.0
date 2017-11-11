@@ -4,7 +4,13 @@ Create new Sede
 @stop
 
 @section('content')
-
+@if(Session::has('message'))
+<div class="alert alert-success alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                    </button>
+                    <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
+                  </div>
+@endif
     <h1>Create New Sede</h1>
     <hr/>
 
@@ -37,6 +43,7 @@ Create new Sede
         <div class="col-sm-offset-3 col-sm-3">
             {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
         </div>
+            <a href="{{route('sedes.index')}}" class="btn btn-default">Return to all sedes</a>
     </div>
     {!! Form::close() !!}
 

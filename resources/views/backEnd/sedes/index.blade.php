@@ -4,10 +4,15 @@ Sede
 @stop
 
 @section('content')
-
+@if(Session::has('message'))
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  {{Session::get('message')}}
+</div>
+@endif
     <h1>Sedes <a href="{{ url('sedes/create') }}" class="btn btn-primary pull-right btn-sm">Add New Sede</a></h1>
     <div class="table table-responsive">
-        <table class="table table-bordered table-striped table-hover" id="tblsedes">
+        <table class="table table-bordered table-striped table-hover"  id="tblsedes">
             <thead>
                 <tr>
                     <th>Idsede</th><th>Descripcion</th><th>Direccion</th><th>Actions</th>
@@ -40,18 +45,37 @@ Sede
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#tblsedes').DataTable({
-            columnDefs: [{
-                targets: [0],
-                visible: true,
-                searchable: false
+   $('#tblsedes').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'print',
+                text: 'Print all'
+            },
+            {
+                  extend: "copy",
+                  text: "copy"
                 },
-            ],
-            order: [[0, "asc"]],
-            language: {
-            "url": "js/Spanish.json"
-        }
-        });
+                 {
+                  extend: "csv",
+                  text: "csv"
+                },
+                {
+                  extend: "excel",
+                  text: "excel"
+                },
+                {
+                  extend: "pdfHtml5",
+                  text: "pdf"
+                },
+            {
+                extend: 'print',
+                text: 'Print selected',
+                
+            }
+        ],
+        select: true
+    } );
     });
 </script>
 @endsection

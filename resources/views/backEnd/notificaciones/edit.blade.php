@@ -1,29 +1,24 @@
 @extends('backLayout.app')
 @section('title')
-Edit Sede
+Edit Notificacione
 @stop
 
 @section('content')
-@if(Session::has('message'))
-<div class="alert alert-success alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  {{Session::get('message')}}
-</div>
-@endif
-    <h1>Edit Sede</h1>
+
+    <h1>Edit Notificacione</h1>
     <hr/>
 
-    {!! Form::model($sede, [
+    {!! Form::model($notificacione, [
         'method' => 'PATCH',
-        'url' => ['sedes', $sede->idsede],
+        'url' => ['notificaciones', $notificacione->idnotificacion],
         'class' => 'form-horizontal'
     ]) !!}
 
-                <div class="form-group {{ $errors->has('idsede') ? 'has-error' : ''}}">
-                {!! Form::label('idsede', 'Idsede: ', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="form-group {{ $errors->has('idnotificacion') ? 'has-error' : ''}}">
+                {!! Form::label('idnotificacion', 'Idnotificacion: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::number('idsede', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('idsede', '<p class="help-block">:message</p>') !!}
+                    {!! Form::number('idnotificacion', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('idnotificacion', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('descripcion') ? 'has-error' : ''}}">
@@ -33,11 +28,11 @@ Edit Sede
                     {!! $errors->first('descripcion', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('direccion') ? 'has-error' : ''}}">
-                {!! Form::label('direccion', 'Direccion: ', ['class' => 'col-sm-3 control-label']) !!}
+            <div class="form-group {{ $errors->has('idpersonapk') ? 'has-error' : ''}}">
+                {!! Form::label('idpersonapk', 'Idpersonapk: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('direccion', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('direccion', '<p class="help-block">:message</p>') !!}
+                    {!! Form::number('idpersonapk', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('idpersonapk', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
 
@@ -46,7 +41,6 @@ Edit Sede
         <div class="col-sm-offset-3 col-sm-3">
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
         </div>
-            <a href="{{route('sedes.index')}}" class="btn btn-default">Return to all sedes</a>
     </div>
     {!! Form::close() !!}
 

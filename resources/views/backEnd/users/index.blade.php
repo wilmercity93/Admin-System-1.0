@@ -96,7 +96,10 @@ Users
          'searchable':false,
          'orderable':false,
             }],
-          'order': [1, 'asc']
+          'order': [1, 'asc'],
+            language: {
+            "url": "js/Spanish.json"
+        }
             });
     });
       // Handle click on "Select all" control

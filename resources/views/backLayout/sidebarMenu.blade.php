@@ -28,9 +28,29 @@
         <br>
         <br>
         <li><a href="{{url('dashboard')}}">INICIO</a></li> 
-
+        @if (Sentinel::getUser()->hasAnyAccess(['configuracion.*']))
+        <li><a><i class="fa fa-bank"></i>Configuración<span class="fa fa-chevron-down"></span></a>
+          <ul class="nav child_menu">
         @if (Sentinel::getUser()->hasAnyAccess(['sedes.*']))
-        <li><a><i class="fa fa-users"></i>Sedes<span class="fa fa-chevron-down"></span></a>
+            <li><a href="{{route('sedes.index')}}">All Sedes</a></li>
+        @endif
+            <li><a href="{{route('categorias.index')}}">All Categorias</a></li>
+            <li><a href="{{route('estados.index')}}">All Estados</a></li>
+            <li><a href="{{route('user.index')}}">All Usuarios</a></li>
+            <li><a href="{{route('role.index')}}">All Roles</a></li>
+          </ul>
+        </li>
+      @endif
+        {{--  @if (Sentinel::getUser()->hasAnyAccess(['estados.*']))
+        <li><a><i class="fa fa-bank"></i>Estados<span class="fa fa-chevron-down"></span></a>
+          <ul class="nav child_menu">
+            <li><a href="{{route('estados.index')}}">All Estados</a></li>
+            <li><a href="{{route('estados.create')}}">New Estado</a></li>
+          </ul>
+        </li>
+      @endif
+        @if (Sentinel::getUser()->hasAnyAccess(['sedes.*']))
+        <li><a><i class="fa fa-bank"></i>Sedes<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
             <li><a href="{{route('sedes.index')}}">All Sedes</a></li>
             <li><a href="{{route('sedes.create')}}">New Sede</a></li>
@@ -44,7 +64,7 @@
             <li><a href="{{route('user.create')}}">New user</a></li>
           </ul>
         </li>
-      @endif
+      @endif  
       @if (Sentinel::getUser()->hasAnyAccess(['role.*']))
         <li><a><i class="fa fa-sitemap"></i>Roles<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
@@ -52,36 +72,57 @@
             <li><a href="{{route('role.create')}}">New Role</a></li>
           </ul>
         </li>
-      @endif
+      @endif  --}}
       @if (Sentinel::getUser()->hasAnyAccess(['facturacion.*']))
          <li><a><i class="fa fa-shopping-bag"></i>Facturacion<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
-            <li><a href="form">Facturas</a></li>
+            <li><a href="{{route('facturacion.index')}}">Facturas</a></li>
           </ul>
         </li>
       @endif
       @if (Sentinel::getUser()->hasAnyAccess(['ventas.*']))
         <li><a><i class="fa fa-check-square-o"></i>Ventas<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
-            <li><a href="general_elements.html">Realizar Ventas</a></li>
+            <li><a href="{{route('ventas.index')}}">Realizar Ventas</a></li>
           </ul>
         </li>
       @endif
       @if (Sentinel::getUser()->hasAnyAccess(['compras.*']))
         <li><a><i class="fa fa-cart-plus"></i>Compras<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
-            <li><a href="tables.html">Comprar Productos</a></li>
+            <li><a href="{{route('compras.index')}}">Comprar Productos</a></li>
           </ul>
         </li>
       @endif
       @if (Sentinel::getUser()->hasAnyAccess(['personal.*']))
-        <li><a><i class="fa fa-universal-access"></i>Personal <span class="fa fa-chevron-down"></span></a>
+        <li><a><i class="fa fa-universal-access"></i>Personal<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
-            <li><a href="tables.html">Clientes</a></li>
-            <li><a href="tables_dynamic.html">Proveedores</a></li>
-            <li><a href="tables_dynamic.html">Empleados</a></li>
+              <li><a>Clientes<span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li class="sub_menu"><a href="level2.html">Level Two</a>
+                  </li>
+                  <li><a href="#level2_1">Level Two</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a>Proveedores<span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li class="sub_menu"><a href="level2.html">Level Two</a>
+                  </li>
+                  <li><a href="#level2_1">Level Two</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a>Empleados<span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li class="sub_menu"><a href="level2.html">Level Two</a>
+                  </li>
+                  <li><a href="#level2_1">Level Two</a>
+                  </li>
+                </ul>
+              </li>
           </ul>
-        </li>
+        </li> 
       @endif
       @if (Sentinel::getUser()->hasAnyAccess(['inventario.*']))
         <li><a><i class="fa fa-cube"></i>Inventario<span class="fa fa-chevron-down"></span></a>
@@ -93,8 +134,8 @@
       @if (Sentinel::getUser()->hasAnyAccess(['notificaciones.*']))
         <li><a><i class="fa fa-file-text-o"></i>Notificaciones<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
-            <li><a href="tables.html">Ver Notificaciones</a></li>
-            <li><a href="tables_dynamic.html">Agregar Notificaciones</a></li>
+            <li><a href="{{route('notificaciones.index')}}">Ver Notificaciones</a></li>
+            <li><a href="{{route('notificaciones.create')}}">Agregar Notificaciones</a></li>
           </ul>
         </li>
       @endif
@@ -108,12 +149,7 @@
           </ul>
         </li>
       @endif
-        <!--<li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
-          <ul class="nav child_menu">
-            <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-            <li><a href="fixed_footer.html">Fixed Footer</a></li>
-          </ul>
-        </li>-->
+       
       </ul>
     </div>
     <!--<div class="menu_section">

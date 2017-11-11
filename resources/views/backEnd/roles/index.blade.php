@@ -55,6 +55,9 @@ User role
                     },
                 ],
                 order: [[0, "asc"]],
+            language: {
+            "url": "js/Spanish.json"
+        }
             });
         });
      $(".deleteconfirm").on("click", function(){
