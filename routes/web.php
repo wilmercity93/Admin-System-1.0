@@ -21,7 +21,7 @@ Route::get('/', ['uses' => 'HomeController@home']);
         Route::post('user/{user}/save', ['uses' => 'UserController@save', 'as' => 'user.save']);
         Route::get('user/{user}/activate', ['uses' => 'UserController@activate', 'as' => 'user.activate']);
         Route::get('user/{user}/deactivate', ['uses' => 'UserController@deactivate', 'as' => 'user.deactivate']);
-          Route::post('user/ajax_all', ['uses' => 'UserController@ajax_all']);
+        Route::post('user/ajax_all', ['uses' => 'UserController@ajax_all']);
 
         //roles
         Route::resource('role', 'RoleController');
@@ -31,38 +31,29 @@ Route::get('/', ['uses' => 'HomeController@home']);
 
         //Facturacion
         Route::resource('facturacion', 'FacturacionController');
-        Route::get('facturacion/{facturacion}/permissions', ['uses' => 'FacturacionController@permissions', 'as' => 'facturacion.permissions']);
+        // Route::get('facturacion/{facturacion}/permissions', ['uses' => 'FacturacionController@permissions', 'as' => 'facturacion.permissions']);
 
         //Ventas
         Route::resource('ventas', 'VentasController');
-        Route::get('ventas/{ventas}/permissions', ['uses' => 'VentasController@permissions', 'as' => 'ventas.permissions']);
+        // Route::get('ventas/{ventas}/permissions', ['uses' => 'VentasController@permissions', 'as' => 'ventas.permissions']);
 
 
         //Compras
         Route::resource('compras', 'ComprasController');
-        Route::get('compras/{compras}/permissions', ['uses' => 'ComprasController@permissions', 'as' => 'compras.permissions']);
-
-
-        //Personal
-        Route::resource('personal', 'PersonalController');
-        Route::get('personal/{personal}/permissions', ['uses' => 'PersonalController@permissions', 'as' => 'personal.permissions']);
+        // Route::get('compras/{compras}/permissions', ['uses' => 'ComprasController@permissions', 'as' => 'compras.permissions']);
 
 
         //Inventario
         Route::resource('inventario', 'InventarioController');
-        Route::get('inventario/{inventario}/permissions', ['uses' => 'InventarioController@permissions', 'as' => 'inventario.permissions']);
+        // Route::get('inventario/{inventario}/permissions', ['uses' => 'InventarioController@permissions', 'as' => 'inventario.permissions']);
 
-
-        //Notificaciones
-        Route::resource('notificaciones', 'NotificacionesController');
-        Route::get('notificaciones/{notificaciones}/permissions', ['uses' => 'NotificacionesController@permissions', 'as' => 'notificaciones.permissions']);
 
         //Reportes
         Route::get('reports/dos', ['uses' => 'ReportsController@dos', 'as' => 'role.permissions']);
         Route::get('reports/tres', ['uses' => 'ReportsController@tres', 'as' => 'role.permissions']);
         Route::get('reports/cuatro', ['uses' => 'ReportsController@cuatro', 'as' => 'role.permissions']);
         Route::resource('reports', 'ReportsController');
-        Route::get('reports/{reports}/permissions', ['uses' => 'ReportsController@permissions', 'as' => 'reports.permissions']);
+        // Route::get('reports/{reports}/permissions', ['uses' => 'ReportsController@permissions', 'as' => 'reports.permissions']);
 
         //Sedes
         Route::resource('sedes', 'sedesController');
@@ -74,10 +65,34 @@ Route::get('/', ['uses' => 'HomeController@home']);
         Route::resource('configuracion', 'configuracionController');
 
         //Categorias
-      	Route::resource('categorias', 'CategoriasController');
+        Route::resource('categorias', 'CategoriasController');
+        
+        //Notificaciones
+        Route::resource('notificaciones', 'NotificacionesController');
+        
+
+        //Promociones
+        Route::resource('promociones', 'PromocionesController');
+        
+
+        //Tipos
+	      Route::resource('tipos', 'TiposController');
+        
+
+        //Cajas
+	      Route::resource('cajas', 'CajasController');
+
+
+        //Personal
+        Route::resource('personas', 'PersonasController');
+      	Route::resource('clientes', 'PersonasController');
+        Route::resource('proveedores', 'PersonasController');
+      	Route::resource('empleados', 'PersonasController');
+        
+        
+        Route::get('personal/{personal}/permissions', ['uses' => 'PersonalController@permissions', 'as' => 'personal.permissions']);
+
+        
         
 
  });
-Route::group(['middleware' => ['web']], function () {
-	Route::resource('notificaciones', 'NotificacionesController');
-});

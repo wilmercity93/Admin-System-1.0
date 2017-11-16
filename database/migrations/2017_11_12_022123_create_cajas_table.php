@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateSedesTable extends Migration
+class CreateCajasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateSedesTable extends Migration
     public function up()
     {
         
-            Schema::create('sedes', function(Blueprint $table) {
-                $table->integer('idsede');
-                $table->string('descripcion');
-                $table->string('direccion');
-                $table->primary('idsede'); 
-                
+            Schema::create('cajas', function(Blueprint $table) {
+                $table->integer('idcaja');
+                $table->string('nombre');
+                $table->integer('idsedefk');
+                $table->primary('idcaja'); 
+
+                $table->foreign('idsedefk')->references('idsede')->on('sedes');
 
                 $table->timestamps();
                 $table->softDeletes();
@@ -33,7 +34,7 @@ class CreateSedesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sedes');
+        Schema::drop('cajas');
     }
 
 }

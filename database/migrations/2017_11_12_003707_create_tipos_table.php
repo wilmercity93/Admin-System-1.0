@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateSedesTable extends Migration
+class CreateTiposTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateSedesTable extends Migration
     public function up()
     {
         
-            Schema::create('sedes', function(Blueprint $table) {
-                $table->integer('idsede');
-                $table->string('descripcion');
-                $table->string('direccion');
-                $table->primary('idsede'); 
-                
+            Schema::create('tipos', function(Blueprint $table) {
+                $table->integer('idtipo');
+                $table->string('nombre');   
+                $table->primary('idtipo'); 
+
 
                 $table->timestamps();
                 $table->softDeletes();
@@ -33,7 +32,7 @@ class CreateSedesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sedes');
+        Schema::drop('tipos');
     }
 
 }

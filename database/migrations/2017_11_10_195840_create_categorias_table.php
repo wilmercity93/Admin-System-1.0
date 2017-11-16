@@ -17,6 +17,8 @@ class CreateCategoriasTable extends Migration
                 $table->integer('idcategoria')->unsigned();
                 $table->string('nombre');
                 $table->string('descripcion');
+                $table->primary('idcategoria'); 
+                
 
                 $table->timestamps();
                 $table->softDeletes();

@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Notificacione extends Model
+class Promocione extends Model
 {
 
     /**
@@ -13,15 +13,15 @@ class Notificacione extends Model
      *
      * @var string
      */
-    protected $table = 'notificaciones';
+    protected $table = 'promociones';
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['idnotificacion', 'descripcion', 'idpersonafk'];
-    protected $primaryKey = 'idnotificacion';
+    protected $fillable = ['idpromocion', 'descripcion', 'procentaje', 'fechainicio', 'fechafin'];
+    protected $primaryKey = 'idpromocion';
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];
