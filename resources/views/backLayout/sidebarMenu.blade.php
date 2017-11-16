@@ -105,7 +105,7 @@
           </ul>
         </li>
       @endif
-      @if (Sentinel::getUser()->hasAnyAccess(['personas.*']))
+    @if (Sentinel::getUser()->hasAnyAccess(['personas.*']))
         <li><a><i class="fa fa-universal-access"></i>Personal<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
       @if (Sentinel::getUser()->hasAnyAccess(['clientes.*']))
@@ -119,7 +119,6 @@
               </li>
       @endif
       @if (Sentinel::getUser()->hasAnyAccess(['proveedores.*']))
-      
               <li><a>Proveedores<span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                   <li class="sub_menu"><a href="{{route('personas.index')}}">All Proveedores</a>
@@ -138,11 +137,10 @@
                   </li>
                 </ul>
               </li>
+      @endif
           </ul>
         </li> 
-      @endif
-      @endif
-      
+    @endif
       @if (Sentinel::getUser()->hasAnyAccess(['inventario.*']))
         <li><a><i class="fa fa-cube"></i>Inventario<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
