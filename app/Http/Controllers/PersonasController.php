@@ -5,13 +5,23 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Tipo;
 use App\Persona;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
 
 class PersonasController extends Controller
-{
+{   
+    private $tipo;
+    private $persona;
+ 
+    public function __construct(Tipo $tipo, Persona $persona) {
+ 
+        $this->tipo = $tipo;
+        $this->persona = $persona;
+       
+    }
 
     /**
      * Display a listing of the resource.
@@ -20,7 +30,11 @@ class PersonasController extends Controller
      */
     public function index()
     {
-        $personas = Persona::all();
+        // $personas = Persona::all();
+
+        $personas = $this->persona->join('tipos as tipo','tipo.idtipo', '=', 'personas.idtipofk')
+                             ->select('personas.*', 'Tipo.nombre as nombretipo')
+                             ->get();
 
         return view('backEnd.personas.index', compact('personas'));
     }
@@ -32,7 +46,10 @@ class PersonasController extends Controller
      */
     public function create()
     {
-        return view('backEnd.personas.create');
+        $tipos = $this->tipo->all();
+        return View('backEnd.personas.create',compact('tipos'));
+
+        // return view('backEnd.personas.create');
     }
 
     /**
@@ -61,8 +78,9 @@ class PersonasController extends Controller
     public function show($id)
     {
         $persona = Persona::findOrFail($id);
+        $tipos = $this->tipo->all();
 
-        return view('backEnd.personas.show', compact('persona'));
+        return view('backEnd.personas.show', compact('persona','tipos'));
     }
 
     /**
@@ -74,9 +92,15 @@ class PersonasController extends Controller
      */
     public function edit($id)
     {
-        $persona = Persona::findOrFail($id);
+        // $persona = Persona::findOrFail($id);
 
-        return view('backEnd.personas.edit', compact('persona'));
+        // return view('backEnd.personas.edit', compact('persona'));
+
+
+        $persona = $this->persona->findOrFail($id);
+        $tipos = $this->tipo->all();
+
+        return view('backEnd.personas.edit', compact('persona','tipos'));
     }
 
     /**
@@ -89,14 +113,31 @@ class PersonasController extends Controller
     public function update($id, Request $request)
     {
         
-        $persona = Persona::findOrFail($id);
-        $persona->update($request->all());
+        // $persona = Persona::findOrFail($id);
+        // $persona->update($request->all());
+
+        $persona = $this->persona->findOrFail($id);
+
+        $input = $request->all();
+
+        $persona->idpersona = $input['idpersona'];
+        $persona->nombre = $input['nombre'];
+        $persona->apellido = $input['apellido'];
+        $persona->telefono = $input['telefono'];
+        $persona->correo = $input['correo'];
+        $persona->fechaNacimiento = $input['fechaNacimiento'];
+        $persona->direccion = $input['direccion'];
+        $persona->idtipofk = $input['idtipo'];
+
+        $persona->save();
 
         Session::flash('message', 'Persona updated!');
         Session::flash('status', 'success');
 
+       
         return redirect('personas');
     }
+
 
     /**
      * Remove the specified resource from storage.

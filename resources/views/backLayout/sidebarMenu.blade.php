@@ -108,6 +108,15 @@
     @if (Sentinel::getUser()->hasAnyAccess(['personas.*']))
         <li><a><i class="fa fa-universal-access"></i>Personal<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
+          <li><a>Todos<span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li class="sub_menu"><a href="{{route('personas.index')}}">All Personal</a>
+                  </li>
+                  <li><a href="{{route('personas.create')}}">New Personal</a>
+                  </li>
+                </ul>
+              </li>
+    @endif
       @if (Sentinel::getUser()->hasAnyAccess(['clientes.*']))
               <li><a>Clientes<span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
@@ -140,7 +149,6 @@
       @endif
           </ul>
         </li> 
-    @endif
       @if (Sentinel::getUser()->hasAnyAccess(['inventario.*']))
         <li><a><i class="fa fa-cube"></i>Inventario<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
@@ -226,9 +234,16 @@
     <a data-toggle="tooltip" data-placement="top" title="Lock">
       <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
     </a>
-    <a data-toggle="tooltip" data-placement="top" title="Logout">
+    <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{route('logout')}}">
       <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
     </a>
+    {{--  {!! Form::open(['url' => url('logout'),'class'=>'form-inline']) !!}
+                {!! csrf_field() !!}
+                
+              <button class="btn  btn-lg btn-block register-button" type="submit" >
+              
+              </button> 
+    {!! Form::close() !!}  --}}
   </div>
   <!-- /menu footer buttons -->
 </div>

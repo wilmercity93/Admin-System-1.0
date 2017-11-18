@@ -10,13 +10,22 @@ Persona
         <table class="table table-bordered table-striped table-hover" id="tblpersonas">
             <thead>
                 <tr>
-                    <th>Idpersona</th><th>Nombre</th><th>Apellido</th><th>Actions</th>
+                    <th>Idpersona</th><th>Nombre</th><th>Apellido</th>
+                    <th>telefono</th><th>correo</th><th>fechaNacimiento</th>
+                    <th>direccion</th><th>idtipofk</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
             @foreach($personas as $item)
                 <tr>
-                    <td><a href="{{ url('personas', $item->idpersona) }}">{{ $item->idpersona }}</a></td><td>{{ $item->nombre }}</td><td>{{ $item->apellido }}</td>
+                    <td><a href="{{ url('personas', $item->idpersona) }}">{{ $item->idpersona }}</a></td>
+                    <td>{{ $item->nombre }}</td>
+                    <td>{{ $item->apellido }}</td>
+                    <td> {{ $item->telefono }}</td>
+                    <td> {{ $item->correo }}</td>
+                    <td> {{ $item->fechaNacimiento }}</td>
+                   <td> {{ $item->direccion }} </td>
+                   <td> {{ $item->nombretipo }} </td>
                     <td>
                         <a href="{{ url('personas/' . $item->idpersona . '/edit') }}" class="btn btn-primary btn-xs">Update</a> 
                         {!! Form::open([

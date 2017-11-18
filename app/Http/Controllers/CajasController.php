@@ -38,9 +38,9 @@ class CajasController extends Controller
 
         // $cajas = Caja::all();
         
-        $sedes = sede::get()->pluck('descripcion', 'idsede');
+        // $sedes = sede::get()->pluck('descripcion', 'idsede');
 
-        return view('backEnd.cajas.index', compact('cajas','sedes'));
+        return view('backEnd.cajas.index', compact('cajas'));
     }
 
     /**
@@ -86,8 +86,10 @@ class CajasController extends Controller
     public function show($id)
     {
         $caja = Caja::findOrFail($id);
+        $sedes = $this->sede->all();
 
-        return view('backEnd.cajas.show', compact('caja'));
+
+        return view('backEnd.cajas.show', compact('caja','sedes'));
     }
 
     /**
@@ -123,27 +125,22 @@ class CajasController extends Controller
 
         $caja = $this->Caja->findOrFail($id);
 
-
-
         $input = $request->all();
 
         $caja->idcaja = $input['idcaja'];
         $caja->nombre = $input['nombre'];
         $caja->idsedefk = $input['idsede'];
 
-
         // $caja->update($request->all());
 
         $caja->save();
 
-
-
         Session::flash('message', 'Caja updated!');
         Session::flash('status', 'success');
 
-        if ($request->sedes) {
-              $user->sedes()->sync([$request->sede]);
-            }
+        // if ($request->sedes) {
+        //       $user->sedes()->sync([$request->sede]);
+        //     }
 
         return redirect('cajas');
     }

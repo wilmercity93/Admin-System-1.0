@@ -15,7 +15,13 @@ Caja
             </thead>
             <tbody>
                 <tr>
-                    <td> {{ $caja->idcaja }} </td><td> {{ $caja->nombre }} </td><td> {{ $caja->idsedefk }} </td>
+                    <td> {{ $caja->idcaja }} </td><td> {{ $caja->nombre }} </td>
+                    <td> 
+                    @foreach ($sedes as $selecsede)
+                            @if($caja->idsedefk == $selecsede->idsede) {{$selecsede->descripcion}} @endif 
+                    @endforeach
+                    {{--  {{ $caja->idsedefk }}   --}}
+                    </td>
                 </tr>
             </tbody>    
         </table>

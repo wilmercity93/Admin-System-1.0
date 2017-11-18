@@ -28,7 +28,6 @@ Create new Caja
                 {!! Form::label('sede', 'Sede: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                      <select class="form-control m-b" id="idsedefk" name="idsedefk" requiered>
-                        <!-- <option > Seleccione estado de la actividad...</option> -->
                             @foreach ($sedes as $selecsedes)
                                 <option value="{{$selecsedes->idsede}}" >{{$selecsedes->descripcion}}</option>
                             @endforeach

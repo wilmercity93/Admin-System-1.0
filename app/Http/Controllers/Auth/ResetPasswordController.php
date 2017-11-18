@@ -61,7 +61,7 @@ class ResetPasswordController extends Controller
               return redirect('login'); 
          }
 
-         Session::flash('message', 'There was something wrong with your request ,please tray again later ');
+         Session::flash('message4', 'There was something wrong with your request ,please tray again later ');
          Session::flash('status', 'error');
        
        return redirect()->back();

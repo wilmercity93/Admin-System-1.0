@@ -16,7 +16,9 @@ Notificacione
             <tbody>
             @foreach($notificaciones as $item)
                 <tr>
-                    <td><a href="{{ url('notificaciones', $item->idnotificacion) }}">{{ $item->idnotificacion }}</a></td><td>{{ $item->descripcion }}</td><td>{{ $item->idpersonapk }}</td>
+                    <td><a href="{{ url('notificaciones', $item->idnotificacion) }}">{{ $item->idnotificacion }}</a></td>
+                    <td>{{ $item->descripcion }}</td>
+                    <td>{{ $item->pern }} {{ $item->pera }}</td>
                     <td>
                         <a href="{{ url('notificaciones/' . $item->idnotificacion . '/edit') }}" class="btn btn-primary btn-xs">Update</a> 
                         {!! Form::open([

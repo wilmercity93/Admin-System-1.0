@@ -24,7 +24,7 @@ class PermissionMiddleware
         }
 
         if (!empty($api)) {
-            return response()->json(['message' => 'No tienes permiso para usar esta ruta'], 403);
+            return response()->json(['message4' => 'No tienes permiso para usar esta ruta'], 403);
         } else {
 
             Session::flash('message', 'Advertencia! No hay suficientes permisos. Por favor contáctenos');

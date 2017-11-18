@@ -19,6 +19,7 @@ class CreateNotificacionesTable extends Migration
                 $table->integer('idpersonafk');
                 $table->primary('idnotificacion'); 
 
+                $table->foreign('idpersonafk')->references('idpersona')->on('personas');
 
                 $table->timestamps();
                 $table->softDeletes();

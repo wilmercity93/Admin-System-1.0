@@ -68,9 +68,13 @@ Route::get('/', ['uses' => 'HomeController@home']);
         Route::resource('categorias', 'CategoriasController');
         
         //Notificaciones
+        // Route::get('notificaciones', 'NotificacionesController@index2');
+        // Route::post('notificaciones', 'NotificacionesController@index2');
+        Route::get('notificaciones/noti', ['uses' => 'NotificacionesController@index2']);
+        Route::post('notificaciones/noti', ['uses' => 'NotificacionesController@index2']);
         Route::resource('notificaciones', 'NotificacionesController');
         
-
+        
         //Promociones
         Route::resource('promociones', 'PromocionesController');
         

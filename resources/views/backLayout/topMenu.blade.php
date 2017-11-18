@@ -30,63 +30,41 @@
                 <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
+                    <span class="badge bg-green">3</span>
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                  <div id="notificaciones"></div>
+                  
+                   {{--  @foreach($notificaciones as $item)
                     <li>
                       <a>
                         <span class="image"><img src="{{ URL::asset('/images/img.jpg') }}" alt="Profile Image" /></span>
                         <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
+                          <span>{{ $item->pern }} {{ $item->pera }}</span>
+                          <span class="time">{{ $item->created_at }}</span>
                         </span>
                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                          {{ $item->descripcion }}
                         </span>
                       </a>
                     </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="{{ URL::asset('/images/img.jpg') }}" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
+                  @endforeach  --}}
+                  {!! Form::open(array('url' => ['notificaciones/noti',],'id'=>'form-noti')) !!}
+                  {!! Form::close() !!}
+                   <li>
+                      <div class="text-center">
+                       <a href="{{route('notificaciones.create')}}">
+                      <strong>New Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
                       </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="{{ URL::asset('/images/img.jpg') }}" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="{{ URL::asset('/images/img.jpg') }}" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
+                      </div>
                     </li>
                     <li>
                       <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
+                      <a href="{{route('notificaciones.index')}}">
+                      <strong>See All Alerts</strong>
                           <i class="fa fa-angle-right"></i>
-                        </a>
+                      </a>
                       </div>
                     </li>
                   </ul>

@@ -64,9 +64,17 @@ Edit Persona
                 </div>
             </div>
             <div class="form-group {{ $errors->has('idtipofk') ? 'has-error' : ''}}">
-                {!! Form::label('idtipofk', 'Idtipofk: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('idtipo', 'Idtipofk: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::number('idtipofk', null, ['class' => 'form-control']) !!}
+                <select class="form-control m-b" id="idtipo" name="idtipo" requiered>
+                    @foreach ($tipos as $selectipos)
+                        <option value="{{$selectipos->idtipo}}" 
+                            @if($persona->idtipofk == $selectipos->idtipo) selected @endif  >
+                            {{$selectipos->nombre}}
+                        </option>
+                    @endforeach
+                </select>
+                    {{--  {!! Form::number('idtipofk', null, ['class' => 'form-control']) !!}  --}}
                     {!! $errors->first('idtipofk', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

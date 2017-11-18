@@ -82,7 +82,7 @@ class RegisterController extends Controller
             Session::flash('status', 'success');
            return redirect('/'); 
         }
-         Session::flash('message', 'Hubo un error con el registro' );
+         Session::flash('message4', 'Hubo un error con el registro' );
          Session::flash('status', 'Error');
          return Redirect::back();
     }

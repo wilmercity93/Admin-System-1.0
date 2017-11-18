@@ -2,6 +2,7 @@
 <html lang="{{ config('app.locale') }}">
 
 @include('backLayout.header')
+@include('backLayout.message')
 
       	  <div class="col-md-3 left_col">
     	   @include('backLayout.sidebarMenu')
@@ -15,7 +16,7 @@
 	        <!-- /top navigation -->
 	        <!-- page content -->
 	        <div class="right_col" role="main">
-	          
+
 	          		 	@yield('content')
 	        </div>
 	        <!-- /page content -->

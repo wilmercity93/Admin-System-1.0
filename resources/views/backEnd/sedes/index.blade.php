@@ -2,14 +2,7 @@
 @section('title')
 Sede
 @stop
-
 @section('content')
-@if(Session::has('message'))
-<div class="alert alert-success alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  {{Session::get('message')}}
-</div>
-@endif
     <h1>Sedes <a href="{{ url('sedes/create') }}" class="btn btn-primary pull-right btn-sm">Add New Sede</a></h1>
     <div class="table table-responsive">
         <table class="table table-bordered table-striped table-hover"  id="tblsedes">
@@ -21,7 +14,7 @@ Sede
             <tbody>
             @foreach($sedes as $item)
                 <tr>
-                    <td><a href="{{ url('sedes', $item->idsede) }}">{{ $item->idsede }}</a></td>
+                    <td>{{ $item->idsede }}</td>
                     <td>{{ $item->descripcion }}</td>
                     <td>{{ $item->direccion }}</td>
                     <td>
@@ -32,6 +25,7 @@ Sede
                             'style' => 'display:inline'
                         ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                        <a href="{{url('sedes', $item->idsede)}}" class="btn btn-info btn-xs">View</a> 
                         {!! Form::close() !!}
                     </td>
                 </tr>
@@ -78,4 +72,5 @@ Sede
     } );
     });
 </script>
+
 @endsection

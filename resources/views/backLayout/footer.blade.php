@@ -41,6 +41,20 @@
         });
     </script>
 
+  <!-- Traer todo las notificaciones a la vista de navegacion -->
+    <script src="{{ URL::asset('/js/readynotificaciones/readynoti.js ') }}"></script>
+
+    <script type="text/javascript">
+    //Leer todo tipo de alerta creada en la seccion
+$(document).ready(function () {
+window.setTimeout(function() {
+    $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+        $(this).remove(); 
+    });
+}, 2000);
+});
+</script>
+
     @yield('scripts')
   </body>
 </html>

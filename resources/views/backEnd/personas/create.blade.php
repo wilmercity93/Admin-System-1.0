@@ -62,7 +62,12 @@ Create new Persona
             <div class="form-group {{ $errors->has('idtipofk') ? 'has-error' : ''}}">
                 {!! Form::label('idtipofk', 'Idtipofk: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::number('idtipofk', null, ['class' => 'form-control']) !!}
+                <select class="form-control m-b" id="idtipofk" name="idtipofk" requiered>
+                    @foreach ($tipos as $selectipo)
+                        <option value="{{$selectipo->idtipo}}" >{{$selectipo->nombre}}</option>
+                    @endforeach
+                </select>
+                    {{--  {!! Form::number('idtipofk', null, ['class' => 'form-control']) !!}  --}}
                     {!! $errors->first('idtipofk', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

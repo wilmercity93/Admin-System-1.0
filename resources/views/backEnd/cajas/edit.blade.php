@@ -33,7 +33,6 @@ Edit Caja
                 {!! Form::label('sede', 'Sede: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     <select class="form-control m-b" id="idsede" name="idsede" requiered>
-                        <!-- <option > Seleccione estado de la actividad...</option> -->
                             @foreach ($sedes as $selecsedes)
                                 <option value="{{$selecsedes->idsede}}" 
                                   @if($caja->idsedefk == $selecsedes->idsede) selected @endif  >

@@ -28,11 +28,19 @@ Edit Notificacione
                     {!! $errors->first('descripcion', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('idpersonapk') ? 'has-error' : ''}}">
-                {!! Form::label('idpersonapk', 'Idpersonapk: ', ['class' => 'col-sm-3 control-label']) !!}
+            <div class="form-group {{ $errors->has('idpersonafk') ? 'has-error' : ''}}">
+                {!! Form::label('idpersonafk', 'Idpersonafk: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::number('idpersonapk', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('idpersonapk', '<p class="help-block">:message</p>') !!}
+                <select class="form-control m-b" id="idpersonafk" name="idpersonafk" requiered>
+                            @foreach ($personas as $selecpersona)
+                                <option value="{{$selecpersona->idpersona}}" 
+                                  @if($notificacione->idpersonafk == $selecpersona->idpersona) selected @endif  >
+                                   {{$selecpersona->nombre}} {{$selecpersona->apellido}}
+                                 </option>
+                            @endforeach
+                    </select>
+                    {{--  {!! Form::number('idpersonafk', null, ['class' => 'form-control']) !!}  --}}
+                    {!! $errors->first('idpersonafk', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
 
