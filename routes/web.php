@@ -84,7 +84,10 @@ Route::get('/', ['uses' => 'HomeController@home']);
         
 
         //Cajas
-	      Route::resource('cajas', 'CajasController');
+        Route::resource('cajas', 'CajasController');
+        
+        // Dashboard
+        // Route::get('dashboard', ['uses' => 'DashboardController@index', 'as' => 'role.permissions']);
 
 
         //Personal
@@ -92,10 +95,9 @@ Route::get('/', ['uses' => 'HomeController@home']);
       	Route::resource('clientes', 'PersonasController');
         Route::resource('proveedores', 'PersonasController');
       	Route::resource('empleados', 'PersonasController');
-        
-        
         Route::get('personal/{personal}/permissions', ['uses' => 'PersonalController@permissions', 'as' => 'personal.permissions']);
 
+        
         
         
 
