@@ -17,6 +17,8 @@ use DB;
 use Hash;
 use Mail;
 use Carbon\Carbon;
+use Image;
+
 
 
 class UserController extends Controller
@@ -358,6 +360,34 @@ class UserController extends Controller
             return response()->json(['success' => true, 'status' => 'Sucesfully Activated']);
         }
     }
+
+    public function perfil(){
+
+        // return view('backEnd.users.perfil', array('user'=>Auth::user()) );
+        $user=Sentinel::getUser();
+        return View('backEnd.users.perfil', compact('user'));
+        
+    }
+
+    public function update_avatar(Request $request){
+
+        if ($request->hasFile('avatar')) {
+            # code...
+            $avatar = $request->file('avatar');
+    		$filename = time() . '.' . $avatar->getClientOriginalExtension();
+    		Image::make($avatar)->resize(300, 300)->save( public_path('images/'.$filename ) );
+
+            $user=Sentinel::getUser();
+    		// $user = Auth::user();
+    		$user->avatar = $filename;
+    		$user->save();
+        }
+
+        $user=Sentinel::getUser();
+        return View('backEnd.users.perfil', compact('user'));
+        
+    }
+
    
 
 

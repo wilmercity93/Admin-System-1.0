@@ -12,16 +12,21 @@
 */
 Route::auth();
 Route::get('/', ['uses' => 'HomeController@home']);
+// Todo lo del perfil del usuario
+Route::get('perfil', ['uses' => 'UserController@perfil']);
+Route::post('perfil', ['uses' => 'UserController@update_avatar']);
+// fin
 
  Route::group(['middleware' => ['web', 'auth', 'permission'] ], function () {
         Route::get('dashboard', ['uses' => 'HomeController@dashboard', 'as' => 'home.dashboard']);
         //users
-        Route::resource('user', 'UserController');
         Route::get('user/{user}/permissions', ['uses' => 'UserController@permissions', 'as' => 'user.permissions']);
         Route::post('user/{user}/save', ['uses' => 'UserController@save', 'as' => 'user.save']);
         Route::get('user/{user}/activate', ['uses' => 'UserController@activate', 'as' => 'user.activate']);
         Route::get('user/{user}/deactivate', ['uses' => 'UserController@deactivate', 'as' => 'user.deactivate']);
         Route::post('user/ajax_all', ['uses' => 'UserController@ajax_all']);
+        Route::resource('user', 'UserController');
+        
 
         //roles
         Route::resource('role', 'RoleController');
@@ -91,14 +96,13 @@ Route::get('/', ['uses' => 'HomeController@home']);
 
 
         //Personal
+        Route::get('personas/c', ['uses' => 'PersonasController@indexc']);
+        Route::get('personas/p', ['uses' => 'PersonasController@indexp']);
         Route::resource('personas', 'PersonasController');
-      	Route::resource('clientes', 'PersonasController');
-        Route::resource('proveedores', 'PersonasController');
-      	Route::resource('empleados', 'PersonasController');
+      	// Route::resource('clientes', 'PersonasController');
+        // Route::resource('proveedores', 'PersonasController');
+      	// Route::resource('empleados', 'PersonasController');
         Route::get('personal/{personal}/permissions', ['uses' => 'PersonalController@permissions', 'as' => 'personal.permissions']);
 
-        
-        
-        
 
  });

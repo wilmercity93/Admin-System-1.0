@@ -31,6 +31,7 @@
     27 => 'Roland\\Crud\\CrudServiceProvider',
     28 => 'Collective\\Html\\HtmlServiceProvider',
     29 => 'Cartalyst\\Sentinel\\Laravel\\SentinelServiceProvider',
+    30 => 'Intervention\\Image\\ImageServiceProvider',
   ),
   'eager' => 
   array (
@@ -50,6 +51,7 @@
     13 => 'App\\Providers\\RouteServiceProvider',
     14 => 'Roland\\Crud\\CrudServiceProvider',
     15 => 'Cartalyst\\Sentinel\\Laravel\\SentinelServiceProvider',
+    16 => 'Intervention\\Image\\ImageServiceProvider',
   ),
   'deferred' => 
   array (

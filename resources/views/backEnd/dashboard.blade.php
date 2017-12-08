@@ -15,14 +15,15 @@ Pagina Principal
 </div>
 <div class="row tile_count">
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-              <div class="count">{{$user}}</div>
-              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-clock-o"></i> <?=date('g:ia');?></span>
+              <div class="count dark">{{$fechahora}}</div>
+              <div> </div>
+              <span class="count_bottom"><i class="green"></i> Fecha Actual(M:D)</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
-              <div class="count">123.50</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
+              <div class="count red">{{$user}}</div>
+              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Roles</span>
@@ -31,12 +32,12 @@ Pagina Principal
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Notififcaciones</span>
-              <div class="count">{{$notificaciones}}</div>
+              <div class="count blue">{{$notificaciones}}</div>
               <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Promociones</span>
-              <div class="count">{{$promociones}}</div>
+              <div class="count purple">{{$promociones}}</div>
               <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
@@ -292,18 +293,13 @@ Pagina Principal
           </div>
 
 
-          <br>
-          <br>
-          <br>
-
       
-
-
-          
 
 @endsection
 
 @section('scripts')
+<script>
 
+</script>
 
 @endsection

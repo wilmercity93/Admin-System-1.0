@@ -50,8 +50,10 @@ class HomeController extends Controller
         $sede = $this->sede->get()->count();
         $promociones = $this->promociones->get()->count();
         $notificaciones = $this->notificaciones->get()->count();
+        $fechahora=date("M-d");      
+        // $fechahora = date("M");
         
         
-    	return view('backEnd.dashboard', compact('user','roles','sede','promociones','notificaciones'));
+    	return view('backEnd.dashboard', compact('user','roles','sede','promociones','notificaciones','fechahora'));
     }
 }

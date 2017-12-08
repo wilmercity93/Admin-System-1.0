@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Bogota',
 
     /*
     |--------------------------------------------------------------------------
@@ -182,6 +182,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         //Sentinel services
         Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
+        // Imgages services
+        Intervention\Image\ImageServiceProvider::class
 
 
     ],
@@ -237,6 +239,7 @@ return [
         'Activation' => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
         'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
         'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

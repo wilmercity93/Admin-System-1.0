@@ -39,6 +39,30 @@ class PersonasController extends Controller
         return view('backEnd.personas.index', compact('personas'));
     }
 
+    public function indexc()
+    {
+        // $personas = Persona::all();
+
+        $personas = $this->persona->join('tipos as tipo','tipo.idtipo', '=', 'personas.idtipofk')
+                             ->select('personas.*', 'Tipo.nombre as nombretipo')
+                             ->where('tipo.idtipo','=', 2)
+                             ->get();
+
+        return view('backEnd.personas.index', compact('personas'));
+    }
+
+    public function indexp()
+    {
+        // $personas = Persona::all();
+
+        $personas = $this->persona->join('tipos as tipo','tipo.idtipo', '=', 'personas.idtipofk')
+                             ->select('personas.*', 'Tipo.nombre as nombretipo')
+                             ->where('tipo.idtipo','=', 3)
+                             ->get();
+
+        return view('backEnd.personas.index', compact('personas'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

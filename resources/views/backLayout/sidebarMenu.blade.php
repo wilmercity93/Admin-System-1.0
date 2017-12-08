@@ -9,7 +9,7 @@
   <!-- menu profile quick info -->
   <div class="profile">
     <div class="profile_pic">
-      <img src="{{ URL::asset('/images/img.jpg') }}" alt="..." class="img-circle profile_img">
+      <img src="images/{{Sentinel::getUser()->avatar}}" alt="..." class="img-circle profile_img">
     </div>
     <div class="profile_info">
       <span>Welcome,</span>
@@ -120,7 +120,7 @@
       @if (Sentinel::getUser()->hasAnyAccess(['clientes.*']))
               <li><a>Clientes<span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                  <li class="sub_menu"><a href="{{route('personas.index')}}">All Clientes</a>
+                  <li class="sub_menu"><a href="{{url('personas/c')}}">All Clientes</a>
                   </li>
                   <li><a href="{{route('personas.create')}}">New Cliente</a>
                   </li>
@@ -130,7 +130,7 @@
       @if (Sentinel::getUser()->hasAnyAccess(['proveedores.*']))
               <li><a>Proveedores<span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                  <li class="sub_menu"><a href="{{route('personas.index')}}">All Proveedores</a>
+                  <li class="sub_menu"><a href="{{url('personas/p')}}">All Proveedores</a>
                   </li>
                   <li><a href="{{route('personas.create')}}">New Proveedor</a>
                   </li>
