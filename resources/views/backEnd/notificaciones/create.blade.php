@@ -10,7 +10,7 @@ Create new Notificacione
 
     {!! Form::open(['url' => 'notificaciones', 'class' => 'form-horizontal']) !!}
 
-                <div class="form-group {{ $errors->has('idnotificacion') ? 'has-error' : ''}}">
+            <div class="form-group {{ $errors->has('idnotificacion') ? 'has-error' : ''}}">
                 {!! Form::label('idnotificacion', 'Idnotificacion: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::number('idnotificacion', null, ['class' => 'form-control']) !!}
@@ -24,16 +24,16 @@ Create new Notificacione
                     {!! $errors->first('descripcion', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('idpersonafk') ? 'has-error' : ''}}">
-                {!! Form::label('idpersonafk', 'Idpersonafk: ', ['class' => 'col-sm-3 control-label']) !!}
+            <div class="form-group {{ $errors->has('idusersfk') ? 'has-error' : ''}}">
+                {!! Form::label('idusersfk', 'idusersfk: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                <select class="form-control m-b" id="idpersonafk" name="idpersonafk" requiered>
-                            @foreach ($personas as $selecpersona)
-                                <option value="{{$selecpersona->idpersona}}" >{{$selecpersona->nombre }} {{$selecpersona->apellido}}</option>
+                <select class="form-control m-b" id="idusersfk" name="idusersfk" requiered>
+                            @foreach ($users as $selecusers)
+                                <option value="{{$selecusers->id}}" >{{$selecusers->first_name }} {{$selecusers->last_name}}</option>
                             @endforeach
                 </select>
-                    {{--  {!! Form::number('idpersonafk', null, ['class' => 'form-control']) !!}  --}}
-                    {!! $errors->first('idpersonafk', '<p class="help-block">:message</p>') !!}
+                    {{--  {!! Form::number('idusersfk', null, ['class' => 'form-control']) !!}  --}}
+                    {!! $errors->first('idusersfk', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
 

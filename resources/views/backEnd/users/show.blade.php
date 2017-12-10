@@ -43,9 +43,17 @@ Show user  {{$user->first_name}}
         <div class="col-md-6 col-md-offset-4">
             <a href="{{route('user.index')}}" class="btn btn-default">Return to  all users</a>
             </div>
-        </div>
+        </div>        
     </ul>
+    <ol>
+            <img src="{{ URL::to('/') }}/images/{{$user->avatar}}" style="width: 40%;height: 10%;">
+     </ol>
+    
+
+    
     </div>
     </div>                
+{{--  {{ HTML::image('img/stuvi-logo.png') }}
+{{ HTML::image('img/stuvi-logo.png') }}  --}}
 
 @stop

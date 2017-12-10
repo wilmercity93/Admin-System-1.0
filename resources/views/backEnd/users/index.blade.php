@@ -28,7 +28,11 @@ Users
             <th>First name</th>
             <th>Last name</th>
             <th>E-mail</th>
+            <th>Telefono</th>
+            <th>Nacimiento</th>
+            <th>Direccion</th>
             <th>user Role</th>
+            <th>Imagen</th>
             <th>Created At</th>
             <th>Actions</th>
         </tr>
@@ -41,7 +45,11 @@ Users
                 <td><a href="{{route('user.show', $user->id)}}">{{$user->first_name}}</a></td>
                 <td><a href="{{route('user.show', $user->id)}}">{{$user->last_name}}</a></td>
                 <td>{{$user->email}}</td>
-                <td> <a href="{{route('user.index',['type='.$user->roles()->first()->name])}}">{{empty($user->roles()->first())?"":$user->roles()->first()->name}}</a>  </td>
+                <td>{{$user->telefono}}</td>
+                <td>{{$user->fecha_nacimiento}}</td>
+                <td>{{$user->direccion}}</td>
+                <td> <a href="{{route('user.index',['type='.$user->roles()->first()->slug])}}">{{empty($user->roles()->first())?"":$user->roles()->first()->name}}</a>  </td>
+                <td><img src="images/{{$user->avatar}}" style="width: 40%;height: 10%;"></td>
                 <td>{{$user->created_at}}</td>
                 <td>
                     @if (Sentinel::getUser()->hasAccess(['user.show']))

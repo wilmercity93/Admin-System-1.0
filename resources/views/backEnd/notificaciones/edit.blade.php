@@ -28,19 +28,19 @@ Edit Notificacione
                     {!! $errors->first('descripcion', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('idpersonafk') ? 'has-error' : ''}}">
-                {!! Form::label('idpersonafk', 'Idpersonafk: ', ['class' => 'col-sm-3 control-label']) !!}
+            <div class="form-group {{ $errors->has('idusersfk') ? 'has-error' : ''}}">
+                {!! Form::label('idusersfk', 'Idusersfk: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                <select class="form-control m-b" id="idpersonafk" name="idpersonafk" requiered>
-                            @foreach ($personas as $selecpersona)
-                                <option value="{{$selecpersona->idpersona}}" 
-                                  @if($notificacione->idpersonafk == $selecpersona->idpersona) selected @endif  >
-                                   {{$selecpersona->nombre}} {{$selecpersona->apellido}}
+                <select class="form-control m-b" id="idusersfk" name="idusersfk" requiered>
+                            @foreach ($users as $selecusers)
+                                <option value="{{$selecusers->id}}" 
+                                  @if($notificacione->idusersfk == $selecusers->id) selected @endif  >
+                                   {{$selecusers->first_name}} {{$selecusers->last_name}}
                                  </option>
                             @endforeach
                     </select>
                     {{--  {!! Form::number('idpersonafk', null, ['class' => 'form-control']) !!}  --}}
-                    {!! $errors->first('idpersonafk', '<p class="help-block">:message</p>') !!}
+                    {!! $errors->first('idusersfk', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
 

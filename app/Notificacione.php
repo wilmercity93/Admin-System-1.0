@@ -20,7 +20,7 @@ class Notificacione extends Model
      *
      * @var array
      */
-    protected $fillable = ['idnotificacion', 'descripcion', 'idpersonafk'];
+    protected $fillable = ['idnotificacion', 'descripcion', 'idusersfk'];
     protected $primaryKey = 'idnotificacion';
 
     use SoftDeletes;

@@ -16,10 +16,11 @@ $(window).load(function() {
                var Html='';
                for (resultado in res.data) {
                         Html = Html+'<li>'+
-                                        // '<span class="image">'+'<img src="{{URL::asset(\'"/images/img.jpg"\')}}" alt="Profile Image"/>'+'</span>'+
+                            '<span class="image">' + '<img src="images/'+ res.data[resultado].avat +'" style="width: 10%;height: 10%; alt="Profile Image"/>'+'</span>'+
+                            // '<img src="images/{{$user->avatar}}" style="width: 40%;height: 10%;">'+
                                         '<a>'+
                                             '<span>'+
-                                                '<span>'+res.data[resultado].pern + res.data[resultado].pera+'</span>'+
+                                                '<span>'+res.data[resultado].usern +' '+ res.data[resultado].usera+'</span>'+
                                                 '<span class="time">'+ res.data[resultado].created_at+'</span>'+
                                             '</span>'+
                                                 '<span class="message">'+res.data[resultado].descripcion+'</span>'+

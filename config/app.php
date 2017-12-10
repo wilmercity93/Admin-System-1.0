@@ -37,8 +37,8 @@ return [
     | application. If disabled, a simple generic error page is shown.
     |
     */
-
-    'debug' => env('APP_DEBUG', false),
+    //en produccion debe estar en false, es la depuracion del programa a correr
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------

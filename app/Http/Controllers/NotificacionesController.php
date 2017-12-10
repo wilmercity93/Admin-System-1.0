@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Persona;
+use App\User;
 use App\Notificacione;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -12,12 +12,12 @@ use Session;
 
 class NotificacionesController extends Controller
 {
-    private $personas;
+    private $users;
     private $notificaciones;
  
-    public function __construct(Persona $personas, Notificacione $notificaciones) {
+    public function __construct(User $users, Notificacione $notificaciones) {
  
-        $this->personas = $personas;
+        $this->users = $users;
         $this->notificaciones = $notificaciones;
        
     }
@@ -33,8 +33,8 @@ class NotificacionesController extends Controller
 
         // return view('backEnd.notificaciones.index', compact('notificaciones'));
 
-        $notificaciones = $this->notificaciones->join('personas as persona','persona.idpersona', '=', 'notificaciones.idpersonafk')
-                             ->select('notificaciones.*', 'persona.nombre as pern','persona.apellido as pera')
+        $notificaciones = $this->notificaciones->join('users as user','user.id', '=', 'notificaciones.idusersfk')
+                             ->select('notificaciones.*', 'user.first_name as usern','user.last_name as usera','user.avatar as avat')
                              ->get();
 
         // $personas = Persona::get()->pluck('nombre','apellido','idpersona');
@@ -45,8 +45,8 @@ class NotificacionesController extends Controller
 
     public function index2()
     {
-        $notificaciones = $this->notificaciones->join('personas as persona','persona.idpersona', '=', 'notificaciones.idpersonafk')
-                             ->select('notificaciones.*', 'persona.nombre as pern','persona.apellido as pera')
+        $notificaciones = $this->notificaciones->join('users as user','user.id', '=', 'notificaciones.idusersfk')
+                             ->select('notificaciones.*', 'user.first_name as usern','user.last_name as usera','user.avatar as avat')
                              ->orderby('created_at','desc')
                              ->take(3)
                              ->get();
@@ -75,10 +75,10 @@ class NotificacionesController extends Controller
     public function create()
     {
         // return view('backEnd.notificaciones.create');
-        $personas = $this->personas->all();
+        $users = $this->users->all();
 
         
-        return View('backEnd.notificaciones.create',compact('personas'));
+        return View('backEnd.notificaciones.create',compact('users'));
     }
 
     /**
@@ -122,9 +122,9 @@ class NotificacionesController extends Controller
     public function edit($id)
     {
         $notificacione = Notificacione::findOrFail($id);
-        $personas = $this->personas->all();
+        $users = $this->users->all();
 
-        return view('backEnd.notificaciones.edit', compact('notificacione','personas'));
+        return view('backEnd.notificaciones.edit', compact('notificacione','users'));
     }
 
     /**
@@ -146,7 +146,7 @@ class NotificacionesController extends Controller
 
         $notificacione->idnotificacion = $input['idnotificacion'];
         $notificacione->descripcion = $input['descripcion'];
-        $notificacione->idpersonafk = $input['idpersonafk'];
+        $notificacione->idusersfk = $input['idusersfk'];
 
         $notificacione->save();
 

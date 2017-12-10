@@ -46,6 +46,10 @@ class User extends Model implements RoleableInterface, PermissibleInterface, Per
      */
     protected $fillable = [
         'email',
+        'telefono',
+        'fecha_nacimiento',
+        'direccion',
+        'avatar',
         'password',
         'last_name',
         'first_name',

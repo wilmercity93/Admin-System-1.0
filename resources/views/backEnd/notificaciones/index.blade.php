@@ -10,7 +10,7 @@ Notificacione
         <table class="table table-bordered table-striped table-hover" id="tblnotificaciones">
             <thead>
                 <tr>
-                   <th>Idnotificacion</th><th>Descripcion</th><th>Idpersonapk</th><th>Actions</th>
+                   <th>Idnotificacion</th><th>Descripcion</th><th>Usuario</th><th>Imagen</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,8 +18,9 @@ Notificacione
                 <tr>
                     <td><a href="{{ url('notificaciones', $item->idnotificacion) }}">{{ $item->idnotificacion }}</a></td>
                     <td>{{ $item->descripcion }}</td>
-                    <td>{{ $item->pern }} {{ $item->pera }}</td>
-                    <td>
+                    <td style="width: 15%;">{{ $item->usern }} {{ $item->usera }}</td>
+                    <td><img src="{{ URL::to('/') }}/images/{{ $item->avat}}" style="width: 15%;height: 10%;" alt="..." ></td>
+                    <td style="width: 15%;">
                         <a href="{{ url('notificaciones/' . $item->idnotificacion . '/edit') }}" class="btn btn-primary btn-xs">Update</a> 
                         {!! Form::open([
                             'method'=>'DELETE',

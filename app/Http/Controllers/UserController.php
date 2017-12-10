@@ -47,8 +47,8 @@ class UserController extends Controller
     public function index(Request $request){
          $type = $request->type;
          $users= User::all();
-         if ($type) {
-          $role = Sentinel::findRoleBySlug( $type);
+         if($type) {
+          $role = Sentinel::findRoleBySlug($type);
           $users = $role->users()->get();
 
          }
@@ -170,6 +170,15 @@ class UserController extends Controller
               }
               if($request->email){
               $user->email=$request->email;
+              }
+              if($request->telefono){
+              $user->telefono=$request->telefono;
+              }
+              if($request->fecha_nacimiento){
+              $user->fecha_nacimiento=$request->fecha_nacimiento;
+              }
+              if($request->direccion){
+              $user->direccion=$request->direccion;
               }
               if($request->new_password && $request->new_password_confirmation ){
                 if ($request->new_password == $request->new_password_confirmation ){

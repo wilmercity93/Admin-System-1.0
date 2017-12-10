@@ -16,10 +16,10 @@ class CreateNotificacionesTable extends Migration
             Schema::create('notificaciones', function(Blueprint $table) {
                 $table->integer('idnotificacion')->unsigned();
                 $table->string('descripcion');
-                $table->integer('idpersonafk');
+                $table->integer('idusersfk');
                 $table->primary('idnotificacion'); 
 
-                $table->foreign('idpersonafk')->references('idpersona')->on('personas');
+                $table->foreign('idusersfk')->references('id')->on('users');
 
                 $table->timestamps();
                 $table->softDeletes();

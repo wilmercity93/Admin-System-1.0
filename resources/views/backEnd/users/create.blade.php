@@ -35,6 +35,9 @@ Create user
 
 {{ Form::open(array('url' => route('user.store'), 'class' => 'form-horizontal','files' => true)) }}
     <ul>
+        <div class="form-group {{ $errors->has('avatar') ? 'has-error' : ''}}">
+             {!! Form::hidden('avatar', 'default.jpg', ['class' => 'col-md-4 control-label']) !!}
+        </div>
         <div class="form-group {{ $errors->has('first_name') ? 'has-error' : ''}}">
              {!! Form::label('first_name', 'First Name', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-sm-6">
@@ -42,7 +45,6 @@ Create user
                 {!! $errors->first('first_name', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
-       
        <div class="form-group {{ $errors->has('last_name') ? 'has-error' : ''}}">
              {!! Form::label('last_name', 'Last name' , ['class' => 'col-md-4 control-label']) !!}
             <div class="col-sm-6">
@@ -57,6 +59,27 @@ Create user
                 {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
+        <div class="form-group {{ $errors->has('telefono') ? 'has-error' : ''}}">
+                 {!! Form::label('telefono', 'Telefono', ['class' => 'col-md-4 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::number('telefono', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('telefono', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+            <div class="form-group {{ $errors->has('fecha_nacimiento') ? 'has-error' : ''}}">
+                 {!! Form::label('fecha_nacimiento', 'Nacimiento', ['class' => 'col-md-4 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::date('fecha_nacimiento', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('fecha_nacimiento', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+            <div class="form-group {{ $errors->has('direccion') ? 'has-error' : ''}}">
+                 {!! Form::label('direccion', 'Direccion', ['class' => 'col-md-4 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('direccion', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('direccion', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
         <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
              {!! Form::label('password', 'Password', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-sm-6">
